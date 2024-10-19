@@ -13,7 +13,7 @@ export function Header() {
   const [showText, setShowText] = useState(true); // State to control text visibility
 
   const handleResize = () => {
-    if (window.innerWidth <= 400) {
+    if (window.innerWidth <= 800) {
       setShowText(false);
     } else {
       setShowText(true);
@@ -60,7 +60,7 @@ export function Header() {
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
             <a href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none', color: 'inherit' }}>
-              <img id="youtube" src="src/assets/youtube.webp" alt="YouTube Logo" style={{ marginRight: '8px', height: '34px' }} />
+              <img id="youtube" src="youtube.webp" alt="YouTube Logo" style={{ marginRight: '8px', height: '34px' }} />
               <p id="valtube">ValTube</p>
             </a>
           </Typography>

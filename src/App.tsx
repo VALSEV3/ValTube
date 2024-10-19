@@ -9,6 +9,7 @@ function App() {
   <>
 <Router>
   <Routes>
+    <Route path="/ValTube" element={<Home />}/>
     <Route path="/" element={<Home />}/>
   </Routes>
 </Router>
