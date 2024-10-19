@@ -1,0 +1,33 @@
+html, body {
+  height: 100%;
+  margin: 0; /* Remove default margin */
+}
+
+/* Set root element to 100% height 
+
+/* Apply a global font and some spacing */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Light gray background */
+}
+
+
+
+/* Header styles */
+header {
+  margin-bottom: 20px; /* Space below the header */
+}
+
+/* Typography styles */
+h1 {
+  color: #333; /* Dark gray color for headings */
+}
+
+button {
+  border-radius: 5px; /* Rounded corners for buttons */
+}
+
+/* Responsive adjustments */
+

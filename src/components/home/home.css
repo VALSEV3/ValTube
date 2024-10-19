@@ -1,0 +1,15 @@
+header{
+  height:64px;
+}
+#main {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-top: 64px; 
+  box-shadow: none;
+  padding: 16px; 
+  margin-left: var(--drawer-width);
+  flex-wrap: wrap; 
+  user-select: none;
+}
+
