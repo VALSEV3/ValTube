@@ -1,0 +1,32 @@
+name:Deploy my project to github pages after push
+
+on:
+  push:
+    branches:
+      - master
+      - main
+
+
+jobs:
+  build:
+    runs-on:ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build project
+        run: bun run build
+
+      - name: Deploy to GitHub Pages
+        run: bun run deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
