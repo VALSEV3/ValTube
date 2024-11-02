@@ -1,4 +1,4 @@
-name:Deploy my project to github pages after push
+name: Deploy my project to GitHub Pages after push
 
 on:
   push:
@@ -6,14 +6,19 @@ on:
       - master
       - main
 
-
 jobs:
   build:
-    runs-on:ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+
+      - name: Cache bun dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.bun
+          key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -26,8 +31,7 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Deploy to github pages
+      - name: Deploy to GitHub Pages
         run: bun run deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
-          
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
