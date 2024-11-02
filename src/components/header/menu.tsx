@@ -1,12 +1,9 @@
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import Divider from '@mui/material/Divider';
+import Button from '@mui/material/Button';
 import Drawer from '@mui/material/Drawer';
-import { Button } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import TrendingUpIcon from '@mui/icons-material/TrendingUp';
-import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import { Link } from 'react-router-dom'; // Импортируйте Link из react-router-dom
 import { MenuProps } from '../../models/menuprops';
 
 const Menu: React.FC<MenuProps> = ({ showText }) => {
@@ -29,30 +26,25 @@ const Menu: React.FC<MenuProps> = ({ showText }) => {
       variant="permanent"
       anchor="left"
     >
-      <List sx={{ display: 'flex', flexDirection: 'column'}}>
-        {[
-          { text: 'Home', icon: <HomeIcon /> },
-          { text: 'Trending', icon: <TrendingUpIcon /> },
-          { text: 'Subscriptions', icon: <SubscriptionsIcon /> },
-        ].map(({ text, icon }) => (
-          <ListItem key={text} component="div" disablePadding>
-            <Button
-              sx={{
-                color: 'var(--color)',
-                textTransform: 'none',
-                justifyContent: 'flex-start',
-                width: '99%',
-                padding: '8px 16px',
-                borderRadius: '10px',
-              }}
-            >
-              <span style={{ marginRight: '8px' }}>{icon}</span>
-              {showText && <ListItemText primary={text} sx={{ textAlign: 'left', margin: 0 }} />}
-            </Button>
-          </ListItem>
-        ))}
+      <List sx={{ display: 'flex', flexDirection: 'column' }}>
+        <ListItem component="div" disablePadding>
+          <Button
+            component={Link} // Используйте Link как компонент
+            to="/" 
+            sx={{
+              color: 'var(--color)',
+              textTransform: 'none',
+              justifyContent: 'flex-start',
+              width: '99%',
+              padding: '8px 16px',
+              borderRadius: '10px',
+            }}
+          >
+            <span style={{ marginRight: '8px' }}><HomeIcon /></span>
+            {showText && <span style={{ margin: 0 }}>Home</span>} {/* Замените ListItemText на span */}
+          </Button>
+        </ListItem>
       </List>
-      <Divider />
     </Drawer>
   );
 };

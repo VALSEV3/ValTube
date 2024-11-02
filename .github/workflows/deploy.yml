@@ -26,7 +26,8 @@ jobs:
       - name: Build project
         run: bun run build
 
-      - name: Deploy to Vercel
-        run: npx vercel --prod
+      - name: Deploy to github pages
+        run: bun run deploy
       env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          

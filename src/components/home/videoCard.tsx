@@ -9,7 +9,7 @@ import { Box } from "@mui/material";
 const VideoCard: React.FC<VideoInterface>=({img,title})=>{
 return(
   <>
-  <Card sx={{  maxWidth: 363,border:'none',boxShadow:'none',height:345,'&:hover': {
+  <Card sx={{  maxWidth: 363,backgroundColor:'var(--background-color)',border:'none',boxShadow:'none',height:315,'&:hover': {
       cursor:'pointer'
     },}}>
  
