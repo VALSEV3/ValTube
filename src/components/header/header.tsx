@@ -10,7 +10,8 @@ import { useState, useEffect } from 'react';
 import UserMenu from './userMenu';
 
 export function Header() {
-  const [showText, setShowText] = useState(true); // State to control text visibility
+
+  const [showText, setShowText] = useState(() => window.innerWidth > 800);
 
   const handleResize = () => {
     if (window.innerWidth <= 800) {
@@ -25,19 +26,15 @@ export function Header() {
   };
 
   useEffect(() => {
+    handleResize(); 
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize); 
+  }, []);
+
+  useEffect(() => {
     const drawerWidth = showText ? '280px' : '33px';
     document.documentElement.style.setProperty('--drawer-width', drawerWidth);
   }, [showText]);
-
-  // Add event listener for window resize
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    
-    // Cleanup event listener on component unmount
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   return (
     <Box sx={{ flexGrow: 1, display: 'flex' }}>
@@ -63,7 +60,7 @@ export function Header() {
               <p id="valtube">ValTube</p>
             </a>
           </Typography>
-<UserMenu/>
+          <UserMenu />
         </Toolbar>
       </AppBar>
     </Box>

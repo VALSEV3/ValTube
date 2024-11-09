@@ -1,17 +1,26 @@
 import { VideoInterface } from "../../models/videocard"
-import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
-const VideoCard: React.FC<VideoInterface>=({img,title})=>{
+const VideoCard=(video:VideoInterface)=>{
+
+  const onCardClick=()=>{
+localStorage.setItem("video", JSON.stringify(video));
+  }
+
 return(
   <>
   <Card sx={{  maxWidth: 363,backgroundColor:'var(--background-color)',border:'none',boxShadow:'none',height:315,'&:hover': {
       cursor:'pointer'
-    },}}>
+    },}}
+    component={Link}
+    to='/Watch'
+    onClick={onCardClick}
+    >
  
 
 
@@ -31,8 +40,8 @@ return(
   <CardMedia 
     component="img"
     height="190"
-    image={img}
-    alt={title}
+    image={video.img}
+    alt={video.title}
     sx={{
       width: '100%',  // Убедитесь, что изображение занимает весь контейнер
       height: '100%',
@@ -44,7 +53,7 @@ return(
 
     <CardContent>
     <Typography gutterBottom variant="h6" component="div" sx={{marginTop:"0px",fontWeight:600,color:'var(--color)'}}>
-          {title}
+          {video.title}
           </Typography>
     </CardContent>
   
